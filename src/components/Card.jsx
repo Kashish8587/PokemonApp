@@ -3,7 +3,7 @@ import Modal from "react-modal";
 function Card(props) {
   const { data } = props;
   const [modalIsOpen, setIsOpen] = React.useState(false);
-  let subtitle;
+
   const customStyles = {
     content: {
       top: "50%",
@@ -16,11 +16,6 @@ function Card(props) {
   };
   function openModal() {
     setIsOpen(true);
-  }
-
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    subtitle.style.color = "#f00";
   }
 
   function closeModal() {
@@ -44,11 +39,10 @@ function Card(props) {
       </ul>
       <div className="card-body">
         <button className="btn btn-primary" onClick={openModal}>
-          Open Modal
+          Get More Details
         </button>
         <Modal
           isOpen={modalIsOpen}
-          onAfterOpen={afterOpenModal}
           onRequestClose={closeModal}
           style={customStyles}
           contentLabel="Example Modal"

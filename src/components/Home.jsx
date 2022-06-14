@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import axios from "axios";
+import Navbar from "./Navbar";
 function Home() {
   const [data, setData] = useState([]);
   const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon/");
@@ -11,7 +12,7 @@ function Home() {
   useEffect(() => {
     getApiData();
   }, [url]);
-  useEffect(() => {}, []);
+
   const getApiData = async () => {
     const resp = await axios.get(`${url}`);
     if (resp.status == 200) {
@@ -37,43 +38,7 @@ function Home() {
   };
   return (
     <div className="container-fluid">
-      <div className="row  search_bar">
-        <div className="col-8">
-          <div className="input-group mb-3">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Enter Name"
-              aria-label="value"
-              aria-describedby="basic-addon1"
-              onChange={onChange}
-            />
-          </div>
-        </div>
-        <div className="col-4">
-          <div class="dropdown">
-            <button
-              class="btn btn-secondary dropdown-toggle"
-              type="button"
-              id="dropdownMenuButton1"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Filter Type
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              {data.map((item) => {
-                <li>
-                  <button className="dropdown-item btn-success">
-                    {item.types[0].type.name}
-                  </button>
-                  ;
-                </li>;
-              })}
-            </ul>
-          </div>
-        </div>
-      </div>
+    <Navbar data={data} onChange={onChange}/>
       <div className="row d-flex justify-content-center align-item-center">
         {data.map((item) => {
           if (item.name.includes(searchValue))
