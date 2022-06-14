@@ -1,0 +1,14 @@
+.search_bar {
+  padding: 12px;
+  margin-top: 12px;
+  display: flex !important;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.searhdata {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
